@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, Query, Injectable } from '@nestjs/common'
-import { ApiOkResponse, ApiTags } from "@nestjs/swagger"
+import { ApiExtraModels, ApiOkResponse, ApiTags, getSchemaPath } from "@nestjs/swagger"
 import { PaginationTransformPipe } from "./commons/pagination-req.dto"
-import { PaginationResDto } from "./commons/pagination-res.dto"
+import { ApiPaginationResponse, PaginationResDto } from "./commons/pagination-res.dto"
 import { CreateUserResDto } from "./dto/create-user-res.dto"
 import { FindAllUserReqDto } from "./dto/find-all-user-req.dto"
 import { FindOneUserResDto } from "./dto/find-one-user-res.dto"
@@ -23,7 +23,24 @@ export class UsersController {
     return this.usersService.create(createUserDto);
   }
 
-  // @ApiOkResponse({ type: PaginationResDto<CreateUserResDto[]>})
+  // @ApiExtraModels(CreateUserResDto)
+  // @ApiExtraModels(PaginationResDto)
+  // @ApiOkResponse({
+  //   schema: {
+  //     allOf: [
+  //       { $ref: getSchemaPath(PaginationResDto) },
+  //       {
+  //         properties: {
+  //           data: {
+  //             type: 'array',
+  //             items: { $ref: getSchemaPath(CreateUserResDto) },
+  //           },
+  //         },
+  //       },
+  //     ],
+  //   },
+  // })
+  @ApiOkResponse({ type: PaginationResDto<CreateUserResDto[]>})
   @Get()
   findAll(@Query(new PaginationTransformPipe()) findAllUserReqDto: FindAllUserReqDto): PaginationResDto<CreateUserResDto[]> {
     return this.usersService.findAll(findAllUserReqDto);

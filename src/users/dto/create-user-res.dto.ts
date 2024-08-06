@@ -3,13 +3,13 @@ import { User } from "../entities/user.entity"
 
 export class CreateUserResDto
 {
-    // @ApiProperty()
+    @ApiProperty()
     firstname: string
 
-    // @ApiProperty({ required: true, type: 'string' })
+    @ApiProperty({ required: true, type: 'string' })
     lastname: string
 
-    // @ApiProperty({ required: true, type: Date })
+    @ApiProperty({ required: true, type: Date })
     createdAt: Date
 
     constructor(user: User)
