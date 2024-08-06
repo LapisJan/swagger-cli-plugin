@@ -1,10 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger"
 
-export class CreateUserReqDto
+export interface CreateUserReqDto
 {
-    @ApiProperty()
     firstname: string
-
-    @ApiProperty({ required: true, type: 'string' })
     lastname: string
 }
