@@ -1,4 +1,5 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, Query, Injectable } from '@nestjs/common'
+import { ApiOkResponse, ApiTags } from "@nestjs/swagger"
 import { PaginationTransformPipe } from "./commons/pagination-req.dto"
 import { PaginationResDto } from "./commons/pagination-res.dto"
 import { CreateUserResDto } from "./dto/create-user-res.dto"
@@ -10,6 +11,7 @@ import { UsersService } from './users.service';
 import { CreateUserReqDto } from './dto/create-user-req.dto';
 import { UpdateUserReqDto } from './dto/update-user-req.dto';
 
+@ApiTags('users')
 @Injectable()
 @Controller('users')
 export class UsersController {
