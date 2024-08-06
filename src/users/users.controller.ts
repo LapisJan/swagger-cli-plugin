@@ -17,6 +17,7 @@ import { UpdateUserReqDto } from './dto/update-user-req.dto';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
+  // @ApiOkResponse({ type: CreateUserResDto})
   @Post()
   create(@Body() createUserDto: CreateUserReqDto): CreateUserResDto {
     return this.usersService.create(createUserDto);
@@ -27,16 +28,19 @@ export class UsersController {
     return this.usersService.findAll(findAllUserReqDto);
   }
 
+  // @ApiOkResponse({ type: FindOneUserResDto})
   @Get(':id')
   findOne(@Param('id') id: string): FindOneUserResDto {
     return this.usersService.findOne(+id);
   }
 
+  // @ApiOkResponse({ type: UpdateUserResDto})
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserReqDto): UpdateUserResDto {
     return this.usersService.update(+id, updateUserDto);
   }
 
+  // @ApiOkResponse({ type: RemoveUserDto})
   @Delete(':id')
   remove(@Param('id') id: string): RemoveUserDto {
     return this.usersService.remove(+id);
