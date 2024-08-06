@@ -23,6 +23,7 @@ export class UsersController {
   }
 
   @Get()
+  // @ApiPaginationResponse(CreateUserResDto)
   findAll(@Query(new PaginationTransformPipe()) findAllUserReqDto: FindAllUserReqDto): PaginationResDto<CreateUserResDto[]> {
     return this.usersService.findAll(findAllUserReqDto);
   }
