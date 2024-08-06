@@ -3,14 +3,14 @@ import { plainToInstance } from "class-transformer"
 
 
 export class Pagination {
-    pages?: number
-    recordsPerPage?: number
+    pages?: number = 1
+    recordsPerPage?: number = 10
 
-    constructor()
-    {
-        this.pages = 1
-        this.recordsPerPage = 10
-    }
+    // constructor()
+    // {
+    //     this.pages = 1
+    //     this.recordsPerPage = 10
+    // }
 }
 
 @Injectable()
