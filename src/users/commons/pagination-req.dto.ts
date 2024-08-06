@@ -4,10 +4,10 @@ import { plainToInstance } from "class-transformer"
 
 
 export class Pagination {
-    // @ApiProperty({ required: true, type: Number })
+    @ApiProperty({ required: true, type: Number })
     pages?: number
 
-    // @ApiProperty({ required: true, type: Number })
+    @ApiProperty({ required: true, type: Number })
     recordsPerPage?: number
 
     constructor()
